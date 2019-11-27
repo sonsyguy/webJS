@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let num1 = [1, 2, 2, 1];
+        let num2 = [2, 2];
+        // 求输出结果为【2，2】
+
+
+        //方法一
+        const arr = [];
+        // for(let i =0;i<num1.length;i++){
+        //     let item1 = num1[i];
+        //     for(let k=0;k<num2.length;k++){
+        //         let item2 = num2[k]
+        //         if(item1===item2){
+        //             arr.push(item2);
+        //             break;
+        //         }
+        //     }
+        // }
+        // console.log(arr);
+
+        // 方法二
+        // num1.forEach((val,index)=>{
+        //     // indexOf()方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。
+        //     let n = num2.indexOf(val);
+        //     console.log(n);
+        //     if(n>=0){
+        //         arr.push(val);
+        //         num1.splice(index,1);
+        //         num2.splice(n,1)
+        //     }
+        // })
+        // console.log(arr);
+
+        //方法三
+        num1.forEach((val) => {
+            // includes() 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。
+            if (num2.includes(val)) {
+                arr.push(val);
+            }
+        })
+        console.log(arr);
+        const array1 = [1, 2, 3];
+
+// console.log(array1.includes(2));
+// // expected output: true
+
+// const pets = ['cat', 'dog', 'bat'];
+
+// console.log(pets.includes('cat'));
+// // expected output: true
+
+// console.log(pets.includes('at'));
+// // expected output: false
+    </script>
+</body>
+
+</html>

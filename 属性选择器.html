@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div name='1'></div>
+    <div name='1'></div>
+    <div></div>
+    <div name='2'></div>
+    <div name='2'></div>
+    <div name='1'></div>
+    <div></div>
+</body>
+<script>
+    function attr(prop,val){
+        let el = document.getElementsByTagName('*');
+        el = Array.from(el);//把类数组转化为数组
+        // [].forEach.call(el,item=>{}) 也是可以的
+        let res=[]
+        el.forEach(item => {
+            //console.log(val);
+            if(prop === 'class'){
+                new RegExp('\\b+val+\\b').test(item.getAttribute(prop))?item.getAttribute(prop):null;
+                return
+            }
+            if(item.getAttribute(prop) == val){
+                res.push(item);
+            }
+        });
+        return res;
+    }
+    console.log(attr('name','1'));
+</script>
+</html>

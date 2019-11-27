@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Dog(name) {
+            this.name = name;
+        }
+        Dog.prototype.bar = function () {
+            console.log('wangwang');
+        }
+        Dog.prototype.say = function () {
+            console.log('my name is' + this.name);
+        }
+
+        function _new(fn,...arg){
+            // 创建一个空对象，让他的原型链指向fn的prototype作为fn的实例
+            // Object.create([AA对象])：创建一个空对象obj，并且让空对象obj作为AA对象所属构造函数的额实例（obj.__proto__=AA）
+            // let obj={};
+            // obj.__proto__ = fn.prototype;
+            let obj = Object.create(fn.prototype)
+            fn.call(obj,...arg);
+            return obj
+        }
+        let sanmao = _new(Dog,'三毛');
+        sanmao.bar();
+        sanmao.say();
+        console.log(sanmao instanceof Dog);
+
+        // let sanmao = new Dog('三毛');
+        // 1.像普通函数执行一样，形成一个私有的作用域
+        //     形参赋值
+        //     变量提升
+        // 2.默认创建一个队形，让函数中的this指向这个对象，这个对象就当作当前类的一个实例
+        // 3.代码执行
+        // 4.默认把创建的对象放回
+        
+
+    </script>
+</body>
+
+</html>

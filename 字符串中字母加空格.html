@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'no函数is我是谁who';
+        let reg = /\b[a-z]+\b/ig;
+        // String.prototype.trim/.trimLeft/.trimRight 去除字符串首位空格
+        str = str.replace(reg,value=>{
+            return ' ' + value + ' '
+        }).trim();   
+        console.log(str);
+    </script>
+</body>
+</html>

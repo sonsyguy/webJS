@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo(){
+            Foo.a = function(){
+                console.log(1);
+            }
+            this.a = function(){
+                console.log(2);
+            }
+        } 
+
+        //把Foo当作类，在原型上设置共有的属性方法 实例.a()
+        Foo.prototype.a = function(){
+            console.log(3);
+        }  
+        // 把Foo当作普通对象设置私有的属性方法 Foo.a();
+        Foo.a = function(){
+            console.log(4);
+        } 
+        Foo.a();4
+        let obj = new Foo(); //obj可以调取原型伤的方法Foo.a() =>1 obj.a() =>2
+        obj.a();2 //私有函数中有a 直接调用私有方法
+        Foo.a();1
+    </script>
+</body>
+</html>

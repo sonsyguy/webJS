@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            2:3,
+            3:4,
+            length:2,
+            push:Array.prototype.push
+        }
+        obj.push(1); // 2:1
+        obj.push(2); // 3:2 length是4
+        console.log(obj);
+        (function(){
+            Array.prototype.push = function(val){
+                this[this.length] = val;
+                return this.length;
+            }
+        })()
+    </script>
+</body>
+</html>

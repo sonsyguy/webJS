@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // for(var i=0;i<10;i++){
+        //     setTimeout(()=>{
+        //         console.log(i);
+        //     },1000)
+        // }
+        //结果输出0到9 每一秒执行一次
+        // 可以用let
+
+        // 第一种方法
+        // for(let i=0;i<10;i++){
+        //     setTimeout(()=>{
+        //         console.log(i);
+        //     },1000)
+        // }
+
+        // 第二种方法闭包
+        // for(var i=0;i<10;i++){
+        //     (function(i){
+        //         setTimeout(()=>{
+        //             console.log(i);
+        //         },1000)
+        //     })(i)
+        // }
+
+        //第三种方法
+        // 可以基于bind的预先处理机制，在循环的时候就把每次执行函数需要输出的结果，预先传给函数即可
+        // var fn = function(i){
+        //     console.log(i);
+        // }
+        // for(var i=0;i<10;i++){
+        //     setTimeout((fn.bing(null,i)),1000)
+        // }
+
+    </script>
+</body>
+</html>

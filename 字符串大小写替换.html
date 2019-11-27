@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let string = 'AAbbCCddEE';
+        const str = string.replace(/[a-zA-Z]/g,content =>{
+            return content.toUpperCase===content?content.toLowerCase:content.toUpperCase;
+        })   
+        // js中判断一个字符串字母是否大小写 
+        // 1. content.toUpperCase===content
+        // 2. content.charCodeAt()>=65 && content.charCodeAt()<=90
+    </script>
+</body>
+</html>

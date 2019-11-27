@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 旋转数组
+        // 给定一个数组，将数组中的元素向右移动k个位置，其中k是非负数
+        // 输入[1,2,3,4,5,6,7]和k=3
+        // 输出[5,6,7,1,2,3,4]
+
+        // 方法一
+        // function rotate(arr,num){
+        //     return [...arr.splice(-num),...arr];
+        // }
+        // const arr = [1,2,3,4,5];
+        // const result = rotate(arr,3);
+        // console.log(result)
+
+        // 方法二
+        // function rotate(arr,num){
+        //     (new Array(num).fill('')).forEach(()=>{
+        //         arr.unshift(arr.pop());
+        //     })
+        //     return arr
+        // }
+        // const arr = [1,2,3,4,5];
+        // const result = rotate(arr,3);
+        // console.log(result)
+
+        // const arr = [1,2,3];
+        // console.log(arr.pop()); //3 arr= [1,2]
+        // // pop()方法从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度。修改愿数组
+        // console.log(arr.shift()); //1 arr = [2]
+        // // shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。修改愿数组
+        // console.log(arr.unshift(2)); //2 arr= [2,2]
+        // // unshift() 方法将一个或多个元素添加到数组的开头，并返回该数组的新长度(该方法修改原有数组)。
+
+        // 方法三
+        // function rotate(num){
+        //     // 参数处理
+        //     if(num<=0 || num ===this.length) return this;
+        //     if(num > this.length) num = num%this.length;
+        //     //return this.slice(-num).concat(this.slice(0,this.length-num));
+        //     return [...this.slice(-num),...this.slice(0,this.length-num)]
+            
+        // }
+        // Array.prototype.rotate = rotate;
+        // const arr = [1,2,3,4,5,6,7];
+        // console.log(arr.rotate(3));
+
+
+        //slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
+        const arr = [1,2,3,4,5];
+        console.log(arr.slice(-2)); //[4,5]
+        console.log(arr.slice(0,2)); //[1,2]
+        console.log(arr);
+
+        //splice() 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
+        // const months = ['Jan', 'March', 'April', 'June'];
+        // months.splice(1, 0, 'Feb');
+        // // inserts at index 1
+        // console.log(months);
+        // // expected output: Array ["Jan", "Feb", "March", "April", "June"]
+
+        // months.splice(4, 1, 'May');
+        // // replaces 1 element at index 4
+        // console.log(months);
+        // // expected output: Array ["Jan", "Feb", "March", "April", "May"]
+
+    </script>
+</body>
+</html>

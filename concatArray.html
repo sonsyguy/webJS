@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 方法一
+        let arrA = ['A1','A2','D1','D2','B1','B2','C1','C2'];
+        let arrB = ['A','B','C','D'];
+        // arrB = arrB.map((item)=>`${item}嘿嘿`);
+        // console.log(arrB);
+        // let arrC = arrA.concat(arrB).sort((a,b)=>a.localeCompare(b));
+        // console.log(arrC);
+        // let result = arrC.map((val)=>{
+        //     return val.replace('嘿嘿','')
+        // })
+        // console.log(result);
+
+        // 方法二
+
+        //splice() 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
+
+        let index = 0; 
+        for(let i = 0; i< arrB.length;i++){
+            let itemB = arrB[i];
+            for(let k=0;k<arrA.length;k++){
+                let itemA = arrA[k];
+                if(itemA.includes(itemB)){
+                    index = k;
+                }
+            }
+            arrA.splice(index+1,0,itemB)
+        }
+        console.log(arrA);
+
+//         var myFish = ["angel", "clown", "mandarin", "sturgeon"];
+//             var removed = myFish.splice(2, 0, "drum");
+
+//             // 运算后的 myFish: ["angel", "clown", "drum", "mandarin", "sturgeon"]
+//             // 被删除的元素: [], 没有元素被删除
+//             从第 2 位开始删除 0 个元素，插入“drum” 和 "guitar"
+//             var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+//             var removed = myFish.splice(2, 0, 'drum', 'guitar');
+
+//             // 运算后的 myFish: ["angel", "clown", "drum", "guitar", "mandarin", "sturgeon"]
+//             // 被删除的元素: [], 没有元素被删除
+//             从第 3 位开始删除 1 个元素
+//             var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+//             var removed = myFish.splice(3, 1);
+
+//             // 运算后的 myFish: ["angel", "clown", "drum", "sturgeon"]
+//             // 被删除的元素: ["mandarin"]
+//             从第 2 位开始删除 1 个元素，插入“trumpet”
+//             var myFish = ['angel', 'clown', 'drum', 'sturgeon'];
+//             var removed = myFish.splice(2, 1, "trumpet");
+
+//             // 运算后的 myFish: ["angel", "clown", "trumpet", "sturgeon"]
+//             // 被删除的元素: ["drum"]
+//             从第 0 位开始删除 2 个元素，插入"parrot"、"anemone"和"blue"
+//             var myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];
+//             var removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
+
+//             // 运算后的 myFish: ["parrot", "anemone", "blue", "trumpet", "sturgeon"]
+//             // 被删除的元素: ["angel", "clown"]
+//             从第 2 位开始删除 2 个元素
+//             var myFish = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
+//             var removed = myFish.splice(myFish.length - 3, 2);
+
+//             // 运算后的 myFish: ["parrot", "anemone", "sturgeon"]
+//             // 被删除的元素: ["blue", "trumpet"]
+//             从倒数第 2 位开始删除 1 个元素
+//             var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+//             var removed = myFish.splice(-2, 1);
+
+//             // 运算后的 myFish: ["angel", "clown", "sturgeon"]
+//             // 被删除的元素: ["mandarin"]
+//             从第 2 位开始删除所有元素
+//             var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+//             var removed = myFish.splice(2);
+
+// // 运算后的 myFish: ["angel", "clown"]
+// // 被删除的元素: ["mandarin", "sturgeon"]
+    </script>
+</body>
+</html>
