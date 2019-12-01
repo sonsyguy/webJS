@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 利用递归方法实现深拷贝
+        // let o ={}
+        let oldObj = {
+            name:'hehe',
+            gae:'11',
+            goods:[12,23,34],
+            style:{
+                color:'red',
+                font:'12px'
+            }
+        }
+        // function deepCopy(oldObj,newObj){
+        //     for(let k in oldObj){
+        //         let item = oldObj[k];
+        //         if(item instanceof Array){
+        //             newObj[k]=[];
+        //             deepCopy(item,newObj[k])
+        //         }else if(item instanceof Object){
+        //             newObj[k]={};
+        //             deepCopy(item,newObj[k])
+        //         }else{
+        //             newObj[k] = item;
+        //         }
+        //     }
+        // }
+        // deepCopy(oldObj,o);
+        // o.goods[2]=99;
+        // console.log(oldObj);
+        // console.log(o);
+
+        // 浅拷贝
+        
+        // let newO = oldObj;
+        // newO.goods[2]=01;
+        // console.log(newO);
+        // console.log(oldObj);
+        // let newQ = Object.assign(oldObj);
+        // console.log(newQ);
+        // let nnObj={};
+
+        // for(let i in oldObj){
+        //     nnObj[i] = oldObj[i]
+        // }
+        // console.log(nnObj);
+    </script>
+</body>
+</html>

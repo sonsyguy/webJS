@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    // promise ,generate,于async
+    <script>
+        var promise1 = new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            resolve('foo');
+          }, 3000);
+        });
+
+        var promise2 = new Promise(function(resolve,reject){
+          setTimeout(()=>{
+            let data = [1,2,3];
+            resolve(data);
+          },1000);
+        })
+
+      promise1.then(function(value) {
+        console.log(value);
+        // expected output: "foo"
+      });
+
+      promise2.then(function(val){
+        console.log(val);
+      })
+
+      Promise.all([promise2,promise1]).then(function(data){
+        console.log(data);
+      })
+
+      Promise.race([promise2,promise1]).then(function(data){
+        console.log(data);
+      })
+
+      console.log(promise1);
+// expected output: [object Promise]
+    </script>
+
+</body>
+</html>

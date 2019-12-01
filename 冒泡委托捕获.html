@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #outer{background: #00B83F;padding:40px;}
+        #middle{background: #2a6496;padding:40px;}
+        #inner{background: #93C3CF;padding:40px;}
+        ul>li{
+            width:200px;
+            height:40px;
+            background: #ccc;
+            margin:2px;
+        }
+    </style>
+</head>
+<body>
+    <div id='outer'>
+        <h2 id='middle'>
+            <p id='inner'></p>
+        </h2>
+    </div>
+
+    <ul id='father'>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        
+        window.onload=function(){
+            // function stopDefault( e ) {
+            //     //一般情况下
+            //     if ( e && e.preventDefault )
+            //         e.preventDefault();
+            //     //IE中
+            //     else
+            //         window.event.returnValue = false;
+            //     return false;
+            // }
+            const outer=document.getElementById('outer');
+            const middle=document.getElementById('middle');
+            const inner=document.getElementById('inner');
+            console.log(outer);
+            // outer.onclick=function(){
+            //     alert('outer');
+            // }
+            // middle.onclick=function(e){
+            //     // 阻止浏览器默认时间
+            //     // stopDefault(e)
+            //     alert('middle');
+            // }
+            // inner.onclick=function(ev){
+            //     // 组织冒泡事件
+            //     var en=ev || event;
+            //     en.cancelBubble=true;
+            //     alert('inner');
+            // }
+
+            // 事件委托
+            const father = document.getElementById('father');
+            let lilist = father.querySelector('li');
+            // for(let i=0;i<lilist.length;i++){
+            //     lilist[i].index = i;
+            // };
+            father.onclick= function(e){
+                var e = e || window.event;
+                var target = e.target || e.srcElement;
+                console.log(e.target.innerText);
+            }
+
+            //事件捕获
+            outer.addEventListener('click',function(){
+                alert('捕获outer')
+            },false)
+            middle.addEventListener('click',function(){
+                alert('捕获middle')
+            },false)
+            inner.addEventListener('click',function(){
+                alert('捕获inner')
+            },false)
+
+            // 先冒泡再捕获 执行机制
+
+        }
+        
+    </script>
+</body>
+</html>

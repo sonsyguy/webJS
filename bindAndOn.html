@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<body>
+    
+<!-- 首先我页面之中有一个ul标签 -->
+<ul class="opo">
+    <li>askjdnsajdnk</li>
+</ul>
+
+<script>
+    const data = [{id:1,val:1},{id:2,val:2},{id:3,val:3},{id:4,val:4}]
+    $('.opo>li').bind('click',function(){
+        $(this).css({'color':'red'})
+    })
+    data.forEach((val)=>{
+        $('.opo').append(
+            `<li>${val.val}</li>`
+        )
+    })
+
+
+    const arr = [1,2];
+    console.log(arr.__proto__);
+    console.log(Array.prototype);
+    
+    // $('.opo').on('click','li',function(){
+    //     console.log(this);
+    //     $(this).css({'color':'red'})
+    // })
+
+    // 总结：
+// bind方法要在，js动态插入标签之后，才可使用，要是在之前写入的话，不可生效。
+
+// 而on方法，无论前后皆可使用，因为他把事件写在了父及上，利用冒泡，实现事件委托，最终实现点击效果。
+</script>
+</body>
+</html>

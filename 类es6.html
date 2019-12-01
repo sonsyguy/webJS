@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>dianji</button>
+    <script>
+        // 单纯的类
+
+        // class Star{
+        //     constructor(x,y){
+        //         this.name = x;
+        //         this.age = y;
+        //     }
+        //     sing(song) {
+        //         console.log(this.name+ '唱了' + song);
+        //     }
+        // }
+
+        // let hel = new Star('heliang',18);
+        // hel.sing('嚣张');
+
+
+        // 继承的类 
+
+        // class Father{
+        //     constructor(x,y){
+        //         this.name = x;
+        //         this.age = y;
+        //     }
+
+        //     interest(ball){
+        //         console.log(
+        //             '我喜欢打' + ball
+        //         );
+        //     }
+        // }
+
+        // class Son extends Father{
+        //     constructor(x,y){
+        //         super(x,y);
+        //     }
+
+        //     interest(ball){
+        //         console.log(
+        //             '我不喜欢打' + ball
+        //         );
+        //     }
+        // }
+
+        // const son1 = new Son('大儿',16);
+        // console.log(son1);
+        // son1.interest('篮球');
+        // 当连个类都有同一个方法在调用的时候采用就近原则
+
+        // class Father {
+        //     constructor(x,y){
+        //         this.x = x;
+        //         this.y = y;
+        //     }
+
+        //     sum(){
+        //         return this.x + this.y;
+        //     }
+        // }
+
+        // class Son extends Father{
+        //     constructor(x,y){
+        //         super(x,y);
+        //         this.x = x;
+        //         this.y = y;
+        //     }
+
+        //     del(){
+        //         return this.x -this.y;
+        //     }
+        // }
+
+        // let hehe = new Son(5,2);
+
+        // console.log(hehe.del());
+        let that;
+        class People{
+            constructor(name,age){
+                that = this;
+                this.name = name;
+                this.age = age;
+                this.btn = document.querySelector('button');
+                this.btn.onclick=this.sing;
+            }
+
+            sing(){
+                console.log(this);
+                console.log(that.name);
+            }
+        }
+        let zxy = new People('张学友',18);
+
+    </script>
+</body>
+</html>

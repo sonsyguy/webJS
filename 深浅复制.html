@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js的深浅复制
+        // js中一共有6中数据类型
+        分别为 Number String Boolean Object null undefined
+        日常中使用的javascript深浅拷贝主要是面向object引用类型进行拷贝
+        贝顾名思义就是复制，内存中一共分为栈内存和堆内存两大区域，所谓深浅拷贝主要是对javascript引用类型数据进行拷贝一份，浅拷贝就是引用类型数据相互赋值之后，例obj1=obj2；如果后面的操作中修改obj1或者obj2，这个时候数据是会进行相应的变化的，因为在内存中引用类型数据是存储在堆内存中，堆内存中存放的是引用类型的值，同时会有一个指针地址指向栈内存，两个引用类型数据地址一样，如果其中一个发生变化另外一个都会有影响；而深拷贝则不会，深拷贝是会在堆内存中重新开辟一块空间进行存放
+        
+基本类型的复制
+        var a = 1;
+        var b = a;//复制
+        console.log(b)//1
+        a = 2;//改变a的值
+        console.log(b)//1
+        console.log(a) //2
+        因为a，b都是属于基本类型，基本类型的复制是不会影响对方的，因为基本类型是每一次创建变量都会在栈内存中开辟一块内存，用来存放值，所以基本类型进行复制是不会对另外一个变量有影响的；
+
+
+引用类型的复制
+            大致分为两种对象和数组两个方面
+            
+    js的浅拷贝
+            var arr1 = ['red','green'];
+            var arr2 = arr1;//复制
+            console.log(arr2)//['red','green'];
+            arr1.push('black') ;//改变color1的值
+            console.log(arr2)//['red','green','black']
+            console.log(arr1) //["red", "green", "black"]
+            上面的案例是javascript数组的浅拷贝，数组是引用类型的数据，引用类型的数据复制是会进行相互影响的
+            我们看到arr1.push('black')添加了一个新的子项，因为上面var arr2=arr1这行代码是将两个引用类型数据的地址指针指向了同一块堆内存区域，所以不管是arr1还是arr2修改，任何一个一个改动两个数组都是会互相产生影响的；上面的那种直接赋值方式的复制就是我们常说的引用类型的浅拷贝；
+
+
+            关于深拷贝很多同学都误以为js的原生方法concat、slice是属于深拷贝，其实不是的；js的原生方法concat、slice都是仅适用于一维数组，一旦到了二维数组或者多维数组中就会出现问题，就出现拷贝的不够彻底导致还是会发生数据的相互牵引问题；
+
+　　　　　slice:
+            var arr1 = ['red','green'];
+            var arr2 = arr1.slice(0);//复制
+            console.log(arr2)//['red','green'];
+            arr1.push('black') ;//改变color1的值
+            console.log(arr2)//["red", "green"]
+            console.log(arr1)//["red", "green", "black"]
+
+            js原生的方法slice会返回一个新的数组，上述代码乍一看会以为是深拷贝，因为arr2和arr1相互复制和牵引，而当arr1调用了push方法添加了新数组子项的时候，arr2没有发生变化；是的，这是符合深拷贝的特性，但是拷贝的不够彻底，所以还不能算是真正意义上的深拷贝，所以slice只能被称为浅拷贝；slice方法只适用于一维数组的拷贝，在二维数组中就会破绽百出；
+
+　　　　　　下面我们再来看一下二维数组的例子：
+
+            var arr1=[1,2,3,['1','2','3']];
+            var arr2=arr1.slice(0);
+            arr1[3][0]=0;
+            console.log(arr1);//[1,2,3,['0','2','3']]
+            console.log(arr2);//[1,2,3,['0','2','3']]
+　　　　　　 上述代码是一个二维数组，当我们在arr1[3][0]里面进行更改arr1的值的时候，我们发现arr1、arr2两个数组的值都发生了变化；所以事实证明slice不是深拷贝；
+
+ 
+
+　　　　　concat:
+
+            var arr1 = ['red','green'];
+            var arr2 = arr1.concat();//复制
+            console.log(arr2)//['red','green'];
+            arr1.push('black') ;//改变color1的值
+            console.log(arr2)//["red", "green"]
+            console.log(arr1)//["red", "green", "black"]
+            
+
+            
+
+            var arr1=[1,2,3,['1','2','3']];
+            var arr2=arr1.concat();
+            arr1[3][0]=0;
+            console.log(arr1);//[1,2,3,['0','2','3']]
+            console.log(arr2);//[1,2,3,['0','2','3']]
+　　　　　　
+
+　　　　　　　concat方法在一维数组中是不会影响源数组的数据的，而在二维数组中concat的表现和slice是一样的；
+
+
+
+    js的深拷贝：
+
+　　　　　　js数组中实现深拷贝的方法都多种，比如JSON.parse(JSON.stringify())和递归以及JQuery库的extend方法（只是extend方法需要依赖JQuery库，所以我们尽量的使用原生的方式来实现）都是可以实现数组和对象的深拷贝的；
+
+            var arr1 = ['red','green'];
+            var arr2 = JSON.parse(JSON.stringify(arr1));//复制
+            console.log(arr2)//['red','green'];
+            arr1.push('black') ;//改变color1的值
+            console.log(arr2)//["red", "green"]
+            console.log(arr1)//["red", "green", "black"]
+            　　　　　上述代码中我们可以清晰的看到JSON.parse(JSON.stringify())是真正意义上实现了深拷贝；
+
+　　　　
+
+
+　　　    　　递归实现深拷贝：              
+
+　　　　　　
+
+                function deepClone(obj){
+                    //判断参数是不是一个对象
+                    let objClone = obj instanceof Object?[]:{};
+                    if(obj && typeof obj==="object"){
+                        for(key in obj){
+                            if(obj.hasOwnProperty(key)){
+                                //判断ojb子元素是否为对象，如果是，递归复制
+                                if(obj[key]&&typeof obj[key] ==="object"){
+                                    objClone[key] = deepClone(obj[key]);
+                                }else{
+                                    //如果不是，简单复制
+                                    objClone[key] = obj[key];
+                                }
+                            }
+                        }
+                    }
+                    return objClone;
+                }    
+
+                var a ={
+                    x:1,
+                    y:2
+                };
+
+
+                b=deepClone(a);
+                a.x=3
+                console.log(a);
+                console.log(b);
+
+                总结：
+
+　　　　　　　　1：深拷贝只是从源数据中拷贝一份出来进行操作，而不是改变源数据；改变源数据的那是浅拷贝；
+
+　　　　　　　　2：原生js方法slice、concat都不是真正意义上的深拷贝，都仅只适用于一维数组，拷贝的属性不够彻底；
+
+　　　　　　　　3：实现js深拷贝我们可以通过JSON.parse(JSON.stringify())、递归以及JQuery库的extend方法来实现；
+
+    </script>
+</body>
+</html>
