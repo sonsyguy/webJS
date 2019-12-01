@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // Async Await
+        async function fn(){
+            setTimeout(()=>{
+                console.log(1);
+            },1000)
+            return Promise.resolve(2);
+        }
+        // let p1 = fn();
+        // console.log(p1);
+        // p1.then((result)=>{
+        //     console.log(result);
+        // })
+        async function fn1(){
+            const val1 = await fn();
+            // return val1;
+            console.log(val1);
+        }
+        
+        console.log(fn1());
+    </script>
+    
+</body>
+</html>
